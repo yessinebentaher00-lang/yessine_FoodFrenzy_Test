@@ -85,5 +85,61 @@
 			</plugin>
 		</plugins>
 	</build>
+	<build>
+    	<plugins>
+        	<!-- Spring Boot Maven Plugin -->
+        	<plugin>
+            	<groupId>org.springframework.boot</groupId>
+            	<artifactId>spring-boot-maven-plugin</artifactId>
+        	</plugin>
+
+        	<!-- SpotBugs plugin -->
+        	<plugin>
+            	<groupId>com.github.spotbugs</groupId>
+            	<artifactId>spotbugs-maven-plugin</artifactId>
+            	<version>4.9.8.1</version>
+            	<configuration>
+                	<failOnError>false</failOnError>
+                	<maxAllowedViolations>9999</maxAllowedViolations>
+            	</configuration>
+            	<dependencies>
+                	<dependency>
+                    	<groupId>com.github.spotbugs</groupId>
+                    	<artifactId>spotbugs</artifactId>
+                    	<version>4.9.8</version>
+                	</dependency>
+                	<dependency>
+                    	<groupId>com.h3xstream.findsecbugs</groupId>
+                    	<artifactId>findsecbugs-plugin</artifactId>
+                    	<version>1.12.0</version>
+                	</dependency>
+            	</dependencies>
+        	</plugin>
+
+        	<!-- OWASP Dependency‑Check plugin -->
+        	<plugin>
+            	<groupId>org.owasp</groupId>
+            	<artifactId>dependency-check-maven</artifactId>
+            	<version>12.1.0</version>
+            	<configuration>
+                	<format>JSON</format>
+                	<ossIndexUsername>yessinebentaher00@gmail.com</ossIndexUsername>
+                	<ossIndexPassword>14e3b2f7245b4d5bc1c9e098c84a8283bd16a4a3</ossIndexPassword>
+               	 	<outputDirectory>${project.build.directory}/dependency‑check‑report</outputDirectory>
+               		<ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
+                	<failBuildOnCVSS>10</failBuildOnCVSS>
+            	</configuration>
+            	<executions>
+                	<execution>
+                    	<goals>
+                        	<goal>check</goal>
+                    	</goals>
+                	</execution>
+            	</executions>
+        	</plugin>
+
+    	</plugins>
+	</build>
+
 
 </project>
